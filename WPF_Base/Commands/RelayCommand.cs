@@ -10,8 +10,6 @@ namespace WPF_Base.Commands
 {
     public class RelayCommand<T> : ICommand
     {
-
-        public event EventHandler CanExecuteChanged;
         private readonly Action<T> _excute;
         private readonly Predicate<T> _canExcute;
 
@@ -20,7 +18,8 @@ namespace WPF_Base.Commands
             this._excute = excute;
             this._canExcute = canExcute;
         }
-        public event EventHandler CanExcuteChanged
+
+        public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
